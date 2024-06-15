@@ -1,0 +1,104 @@
+:root {
+    --primary-color-dark: 25, 30, 36;
+    --secondary-color-dark: 255, 255, 255;
+    --accent-color-dark: 95, 187, 151;
+  }  
+
+body.dark-mode {
+    background-color: rgba(240, 247, 238, 0.3);
+    color: rgba(var(--primary-color-dark), 1);
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.dark-mode .mode-button svg {
+    fill: rgba(var(--primary-color-dark), 1);
+    stroke: rgba(var(--primary-color-dark), 1);
+}
+
+
+.dark-mode .navbar {
+  background-color: rgba(var(--secondary-color-dark));
+}
+  
+  .dark-mode input,
+  .dark-mode .logo-button,
+  .dark-mode .generate-button,
+  .dark-mode .shuffle-button,
+  .dark-mode .workout-pointer p,
+  .dark-mode .tooltip-pointer p {
+    color: rgba(var(--primary-color-dark), 1);
+}
+
+.dark-mode input::-webkit-input-placeholder {
+    color: rgba(var(--primary-color-dark), 0.5);
+  }
+
+  .dark-mode input:-moz-placeholder {
+    color: rgba(var(--secondary-color-dark), 0.5);
+  }
+
+  .dark-mode input::-moz-placeholder {
+    color: rgba(var(--primary-color-dark), 0.5);
+  }
+
+
+  .dark-mode input:-ms-input-placeholder {
+    color: rgba(var(--primary-color-dark), 0.5);
+  }
+
+  .dark-mode input::placeholder {
+    color: rgba(var(--primary-color-dark), 0.5);
+  }
+
+.dark-mode .mode-button:hover,
+.dark-mode .logo-button:hover {
+    background-color: rgba(var(--primary-color-dark), 0.1);
+}
+
+.dark-mode .sun-icon {
+    display: none;
+}
+
+.dark-mode #sun-icon-circle {
+    display: none;
+}
+
+.dark-mode .moon-icon {
+    display: block;
+}
+
+.dark-mode .workout:hover {
+    background-color: rgba(var(--primary-color-dark), 0.1);
+  }
+
+
+.dark-mode .modal {
+    background-color: rgba(var(--secondary-color-dark), 0.5);
+}
+
+.dark-mode .modal-content {
+    background-color: rgba(67, 72, 78, 1);
+    color: rgba(var(--primary-color-dark), 1);
+}
+
+.dark-mode .icon svg {
+    fill: rgba(var(--primary-color-dark), 0.4);
+}
+
+.dark-mode .generate-button {
+  color: rgba(255, 255, 255);
+}
+
+.dark-mode .shuffle-button:hover {
+  background-color: rgba(var(--primary-color-dark), 0.1);
+}
+
+.dark-mode .workout-container,
+.dark-mode #tooltip-container {
+  background-color: rgba(var(--secondary-color-dark));
+}
+
+.dark-mode .workout-container-title,
+.dark-mode .tooltip-container-title {
+  color: rgba(var(--primary-color-dark), 0.5);
+}

@@ -1,0 +1,526 @@
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: unset;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  img,
+  picture,
+  svg,
+  canvas {
+    display: block;
+    max-inline-size: 100%;
+    block-size: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+:root {
+  --primary-color: 204, 219, 220;
+  --secondary-color: 25, 30, 36;
+  --accent-color: 95, 187, 151;
+}  
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(var(--secondary-color), 1);
+  color: rgba(var(--primary-color), 1);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  margin: 0 auto;
+  overflow-y: scroll;
+  font-size: 1.4em;
+  font-weight: 600;
+  transition: color 0.5s, background-color 0.5s;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+main {
+height: 100vh;
+}
+
+header {
+padding: 0.4em;
+width: 100%;
+justify-content: center;
+display: flex;
+}
+
+.navbar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color:rgba(33, 40 ,48);
+border-radius: 12px;
+box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+width: 100%;
+max-width: 20em;
+}
+
+.logo,
+.mode,
+.logo-icon {
+display: flex;
+padding: 0 0.2em;
+}
+
+.logo-icon-button {
+border: none;
+width: 40px;
+background-color: transparent;
+padding: 0.2em;
+cursor: pointer;
+transition: background-color 0.3s, border-radius 0.3s, transform 0.3s;
+}
+
+.logo-icon-button:hover {
+background-color: rgba(var(--primary-color), 0.1);
+border-radius: 8px;
+}
+
+.logo-button {
+border: none;
+background-color: transparent;
+padding: 0.3em 0.5em;
+cursor: pointer;
+color: rgba(var(--primary-color), 1);
+font-size: 1.2rem;
+font-weight: 600;
+transition: background-color 0.3s, border-radius 0.3s, transform 0.3s;
+}
+
+.logo-button:hover {
+background-color: rgba(var(--primary-color), 0.1);
+border-radius: 8px;
+}
+
+.logo-button:active {
+transform: scale(0.975); 
+}
+
+.mode-button {
+border: none;
+background-color: transparent;
+padding: 0.3em;
+cursor: pointer;
+margin: 0;
+transition: background-color 0.3s, border-radius 0.3s, transform 0.3s;
+}
+
+.mode-button:hover {
+background-color: rgba(var(--primary-color), 0.1);
+border-radius: 8px;
+}
+
+.mode-button:active {
+transform: scale(0.975); 
+}
+
+.sun-icon {
+display: block;
+}
+
+#sun-icon-circle {
+display: block;
+}
+
+.moon-icon {
+display: none;
+}
+
+.mode-button svg {
+fill: rgba(var(--primary-color), 1);
+stroke: rgba(var(--primary-color), 1);
+}
+
+.content {
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 1em;
+max-width: 100%;
+margin-left: auto;
+margin-right: auto;
+height: 100%;
+}
+
+.form-section {
+max-width: 100%;
+}
+
+.form {
+font-size: 0.9em;
+}
+
+input {
+background-color: transparent;
+border: none;
+outline: none;
+color: rgba(var(--primary-color), 1);
+box-sizing: border-box;
+width: 100%;
+margin: -0.5rem;
+}
+
+input::-webkit-input-placeholder {
+color: rgba(var(--primary-color), 0.5);
+}
+input:-moz-placeholder {
+color: rgba(var(--primary-color), 0.5);
+}
+input::-moz-placeholder {
+color: rgba(var(--primary-color), 0.5);
+}
+input:-ms-input-placeholder {
+color: rgba(var(--primary-color), 0.5);
+}
+input::placeholder {
+color: rgba(var(--primary-color), 0.5);
+}
+
+/* Change these to ID's since they're only used onece */
+#time {
+max-width: 2rem;
+}
+
+#tension {
+max-width: 7rem
+}
+
+/*
+This is for the shared styles between the input fields.
+Could also use 'input' but then if you want more inputs in the future it gets messy
+*/
+.time-tension-input {
+text-align: left;
+/* Makes it more obvious that the input fields are still changeable... */
+color: rgba(175, 175, 175, 255);
+padding-left: 0.6rem;
+}
+
+.form-info {
+font-weight: lighter;
+font-size: 1rem;
+}
+
+.generate-button {
+background: rgba(var(--accent-color), 1);
+border: 0;
+border-radius: 12px;
+color: rgba(255, 255, 255);
+cursor: pointer;
+display: inline-block;
+font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+font-size: 1rem;
+font-weight: 400;
+line-height: 2.5;
+outline: transparent;
+padding: 0.1rem 5rem;
+text-align: center;
+text-decoration: none;
+user-select: none;
+-webkit-user-select: none;
+touch-action: manipulation;
+white-space: nowrap;
+transition: background 0.3s, transform 0.3s;
+min-width: 18.5em;
+}
+
+.generate-button:hover {
+background: rgba(var(--accent-color), 0.75);
+}
+
+.generate-button:active {
+transform: scale(0.975); 
+}
+
+.shuffle-button {
+border: 0;
+border-radius: 12px;
+display: grid;
+cursor: pointer;
+font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+font-size: 1rem;
+font-weight: 400;
+line-height: 2.5;
+outline: transparent;
+padding: 0.1rem 5.35rem;
+text-align: center;
+text-decoration: none;
+user-select: none;
+-webkit-user-select: none;
+touch-action: manipulation;
+white-space: nowrap;
+margin-top: 0.5rem;
+transition: background 0.3s, transform 0.3s;
+background-color: transparent;
+color: rgba(var(--primary-color), 1);
+min-width: 18.5em;
+}
+
+.shuffle-button:hover {
+background: rgba(var(--primary-color), 0.1);
+border-radius: 12px;
+}
+
+.shuffle-button:active {
+transform: scale(0.975); 
+}
+
+.feedback p {
+font-size: 1rem;
+font-weight: 400;
+margin-top: 2rem;
+}
+
+.workout-pointer {
+position: relative;
+z-index: 999;
+padding: 1em;
+display: none;
+}
+
+.workout-pointer svg {
+transform: rotate(220deg) scale(0.8);
+transform-origin: center;
+position: absolute;
+left: 12.3rem;
+top: -1.4rem;
+}
+
+.workout-pointer p {
+position: absolute;
+font-size: 14px;
+color: rgba(var(--primary-color), 0.75);
+font-weight: 400;
+top: -1rem;
+opacity: 0.75;
+}
+
+.workout-section {
+display: flex;
+align-items: center;
+flex-direction: column;
+justify-content: center;
+width: 100%;
+max-width: 18.5rem;
+margin-top: 1em;
+}
+
+.workout-container-title,
+.tooltip-container-title {
+font-size: 0.5em;
+font-weight: lighter;
+color: rgba(var(--primary-color), 0.5);
+}
+
+.workout-container {
+display: flex;
+justify-content: flex-start;
+flex-direction: column;
+position: relative;
+align-items: flex-start;
+border-radius: 0.5em;
+flex-shrink: 0;
+overflow-y: auto;
+font-size: 0.9em;
+transition: opacity 0.5s ease-in-out;
+width: 100%;
+padding: 0.5rem;
+margin-bottom: 1em;
+background-color:rgba(33, 40 ,48);
+border-radius: 12px;
+box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+}
+
+.workout {
+cursor: default;
+opacity: 0;
+padding: 0 0.5rem 0 0.5rem;
+}
+
+.workout:hover {
+background-color: rgba(var(--primary-color), 0.1);
+width: 100%;
+border-radius: 8px;
+transition: background-color 0.3s, transform 0.3s;
+}
+
+.workout:hover:active {
+transform: scale(0.975);
+}
+
+.tooltip-pointer {
+position: relative;
+z-index: 999;
+bottom: -2rem;
+left: -3rem;
+opacity: 0;
+transition: opacity 0.5s ease-in-out;
+display: none;
+}
+
+.hidden {
+display: none;
+}
+
+
+.tooltip-pointer svg {
+position: absolute;
+top: 1.5rem;
+left: -0.8rem;
+}
+
+.tooltip-pointer p {
+position: absolute;
+font-size: 14px;
+color: rgba(var(--primary-color), 0.75);
+font-weight: 400;
+left: -4rem;
+bottom: -2.5rem;
+opacity: 0.75;
+max-width: 6.5rem;
+justify-content: center;
+text-align: center;
+}
+
+#tooltip-container {
+display: flex;
+justify-content: flex-start;
+flex-direction: column;
+position: relative;
+align-items: flex-start;
+width: 100%;
+overflow-y: auto;
+font-size: 0.85rem;
+font-weight: lighter;
+cursor: default;
+line-height: 0.8rem;
+word-wrap: break-word;
+background-color:rgba(33, 40 ,48);
+border-radius: 12px;
+box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+padding: 0.5rem;
+}
+
+.tooltip-section {
+display: flex;
+align-items: center;
+flex-direction: column;
+justify-content: center;
+width: 100%;
+max-width: 18.5rem;
+}
+
+.icon {
+margin-left: 0.75rem;
+opacity: 0.75;
+}
+
+/* .modal {
+display: none; 
+position: fixed; 
+z-index: 1; 
+left: 0;
+top: 0;
+width: 100vw;
+height: 100vh;
+height: 100%; 
+background-color: rgba(var(--primary-color), 0.5);
+justify-content: center;
+align-items: center;
+margin: 0;
+}
+
+.modal-content {
+background-color: rgba(var(--secondary-color), 1);
+color: rgba(var(--primary-color), 1);
+padding: 1em; 
+font-size: 1em;
+text-align: center;
+border-radius: 15px;
+display: flex;
+align-items: center;
+border: none;
+max-width: 90%; 
+max-height: 90%; 
+overflow: auto; 
+box-sizing: border-box; 
+}
+
+.close {
+border: none;
+background-color: rgba(var(--accent-color), 1);
+padding: 0.35em;
+cursor: pointer;
+margin: 0;
+transition: background-color 0.3s, border-radius 0.3s, transform 0.3s;
+border-radius: 12px;
+}
+
+.close:hover,
+.close:focus {
+background-color: rgba(var(--accent-color), 0.75);
+text-decoration: none;
+cursor: pointer;
+}
+
+.close:active {
+transform: scale(0.975); 
+
+}
+
+.close svg {
+stroke: rgba(var(--secondary-color), 1)
+} */
+
+.icon svg {
+fill: rgba(var(--primary-color), 0.4);
+}
+
+.tooltip-pointer path,
+.workout-pointer path {
+stroke: rgba(var(--accent-color), 1);
+}
+
+/* <600px, 601px, 768px, 992,px 1200px */
+
+@media (max-width: 600px) {
+/* Is this doing anything? */
+#time,
+#tension {
+  flex: 1 1 auto;
+  width: 100%;
+}
+}
